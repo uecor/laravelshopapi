@@ -5,17 +5,17 @@ return [
     /*
      * 站点标题
      */
-    'name' => 'Laravel Shop',
+    'name' => '才智云管理后台',
 
     /*
      * 页面顶部 Logo
      */
-    'logo' => '<b>Laravel</b> Shop',
+    'logo' => '<b>才智云</b> 管理后台',
 
     /*
      * 页面顶部小 Logo
      */
-    'logo-mini' => '<b>LS</b>',
+    'logo-mini' => '<b>才智云</b>',
 
     /*
      * 路由配置
@@ -37,7 +37,7 @@ return [
     /*
      * Laravel-Admin 页面标题
      */
-    'title' => 'Laravel Shop 管理后台',
+    'title' => '才智云管理后台',
 
     /*
      * 是否使用 https
@@ -143,7 +143,7 @@ return [
     /*
      * 页面底部展示的版本.
      */
-    'version' => '1.5.x-dev',
+    'version' => '1.0',
 
     /*
      * 扩展设置.
