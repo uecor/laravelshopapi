@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Models;
-
+//增加支持JWT
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
@@ -47,4 +48,19 @@ class User extends Authenticatable
             ->withTimestamps()
             ->orderBy('user_favorite_products.created_at', 'desc');
     }
+
+    //支持JWT
+    // Rest omitted for brevity
+    //JWT 是 JSON Web Token 的缩写，是一个非常轻巧的规范
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
 }
