@@ -32,7 +32,7 @@ $api->version('v1', [
         // 小程序登录
         $api->post('weapp/authorizations', 'AuthorizationsController@weappStore')
             ->name('api.weapp.authorizations.store');
-            // 小程序注册
+        // 小程序注册
         $api->post('weapp/users', 'UsersController@weappStore')
             ->name('api.weapp.users.store');
         // 刷新token
@@ -41,7 +41,6 @@ $api->version('v1', [
         // 删除token
         $api->delete('authorizations/current', 'AuthorizationsController@destroy')
             ->name('api.authorizations.destroy');
-
     });
 
       $api->group([
@@ -56,9 +55,15 @@ $api->version('v1', [
               // 当前登录用户信息
               $api->get('user', 'UsersController@me')
                   ->name('api.user.show');
-          // 当前登录用户权限
-          $api->get('user/permissions', 'PermissionsController@index')
-              ->name('api.user.permissions.index');
+                  // 图片资源
+              $api->post('images', 'ImagesController@store')
+                  ->name('api.images.store');
+              // 当前登录用户权限
+              $api->get('user/permissions', 'PermissionsController@index')
+                  ->name('api.user.permissions.index');
+              // 编辑登录用户信息
+              $api->patch('user', 'UsersController@update')
+                  ->name('api.user.update');
           });
       });
 });
