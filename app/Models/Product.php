@@ -11,7 +11,7 @@ class Product extends Model
     protected $casts = [
         'on_sale' => 'boolean', // on_sale 是一个布尔类型的字段
     ];
-    // 与商品SKU关联
+    // 与商品SKU关联,一个商品有许多SKU
     public function skus()
     {
         return $this->hasMany(ProductSku::class);
@@ -25,4 +25,10 @@ class Product extends Model
         }
         return \Storage::disk('public')->url($this->attributes['image']);
     }
+  // 与商品产品类型关联，一个商品只有一个类型
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
 }

@@ -63,6 +63,9 @@ $api->version('v1', [
                   ->name('api.user.permissions.index');
               // 编辑登录用户信息
               $api->patch('user', 'UsersController@update')
+                  ->name('api.user.patch');
+                  // 编辑登录用户信息
+              $api->put('user', 'UsersController@update')
                   ->name('api.user.update');
           });
       });

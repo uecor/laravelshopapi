@@ -3,7 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Product;
-
+use App\Models\Category;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
@@ -64,6 +64,11 @@ class ProductsController extends Controller
     {
         return Admin::grid(Product::class, function (Grid $grid) {
             $grid->id('ID')->sortable();
+            // 第三列显示director字段，通过display($callback)方法设置这一列的显示内容为users表中对应的用户名
+            $grid->category_id('分类')->display(function($category_id) {
+                return Category::find($category_id)->name;
+            });
+
             $grid->title('商品名称');
             $grid->on_sale('已上架')->display(function ($value) {
                 return $value ? '是' : '否';
@@ -92,10 +97,14 @@ class ProductsController extends Controller
      */
     protected function form()
     {
+
         // 创建一个表单
         return Admin::form(Product::class, function (Form $form) {
             // 创建一个输入框，第一个参数 title 是模型的字段名，第二个参数是该字段描述
             $form->text('title', '商品名称')->rules('required');
+            $category = Category::all()->pluck('name', 'id')->toArray();
+            //dd($category);
+           $form->select('category_id', '类型')->options($category);
             // 创建一个选择图片的框
             $form->image('image', '封面图片')->rules('required|image');
             // 创建一个富文本编辑器
