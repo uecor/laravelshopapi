@@ -13,6 +13,11 @@
         </div>
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <ul class="nav navbar-nav">
+              <li class=""><a href="{{ route('products.index') }}">话题</a></li>
+              <li class=""><a href="{{ route('categories.show', 1) }}">分享</a></li>
+              <li class=""><a href="{{ route('categories.show', 2) }}">教程</a></li>
+              <li class=""><a href="{{ route('categories.show', 3) }}">问答</a></li>
+              <li class=""><a href="{{ route('categories.show', 4) }}">公告</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <!-- 登录注册链接开始 -->
