@@ -5,6 +5,7 @@ namespace App\Providers;
 use Monolog\Logger;
 use Yansongda\Pay\Pay;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +16,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+      //视图间共享数据
+      // view()->share('sitename','Laravel学院')
+      // 视图间共享数据
+      $categories = Category::all();
+      view()->share('categories',$categories);
+      // //视图Composer
+      // view()->composer('hello',function($view){
+      //     $view->with('user',array('name'=>'test','avatar'=>'/path/to/test.jpg'));
+      // });
+      //dd($categories);
+      // view()->composer('*',function($view){
+      //     //$view->with('category ',$categories);
+      //     $view->with('categories',array('id'=>'test','name'=>'OKD'));
+      // });
     }
 
     /**
